@@ -5,6 +5,7 @@ const cTable = require('console.table');
 const { isAsyncFunction } = require('util/types');
 const { allowedNodeEnvironmentFlags } = require('process');
 const e = require('express');
+const { start } = require('repl');
 
 let departments = [];
 let roles = [];
@@ -212,10 +213,11 @@ async function startQuestions() {
         updateEmployeeRole();
     }
 
+    if (question.trackerAction === 'Quit') {
+        console.log("If in case I don't see ya, Good afternoon, Good evening, and Good night! Press CRTL C to exit.");
+        return;
+    }
 
+    startQuestions();
 
-
-
-
-
-}
+};
