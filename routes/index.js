@@ -59,13 +59,13 @@ async function startQuestions() {
         newEmployee = await inquirer.prompt([
             {
                 type: 'input',
-                name: 'newDepartment',
-                message: "What is the new employee's name? (This is required)",
-                validate: newEmployee => {
-                    if (newEmployee) {
+                name: 'newEmployeeFirstName',
+                message: "What is the new employee's first name? (This is required)",
+                validate: newEmployeeFirstName => {
+                    if (newEmployeeFirstName) {
                         return true;
                     } else {
-                        console.log("Enter the new employee's name!")
+                        console.log("Enter their first name!")
                     }
                 }
             }
