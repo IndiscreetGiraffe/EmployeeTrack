@@ -285,3 +285,17 @@ const addDepartment = () => {
         console.log("Use the down arrow to perform another action.");
     });
 };
+
+const addEmployee = () => {
+    const params = [employees[employees.length-1].newEmployeeFirstName, employees[employees.length-1].newEmployeeLastName, employees[employees.length-1].roleID, employees[employees.length-1].managerID, employees[employees.length-1].departmentID];
+
+    db.query(`INSERT INTO employee (first_name, last_name, role_id, manager_id, department_id)
+    VALUES (?, ?, ?, ?, ?)`, params, (err, res) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('', "The new employee has been added!")
+        console.log("Use the down arrow to perform another action.")
+    });
+};
