@@ -80,7 +80,7 @@ async function startQuestions() {
                         console.log("Enter their last name!")
                     }
                 }
-            }
+            },
             {
                 type: 'input',
                 name: 'roleID',
@@ -92,7 +92,7 @@ async function startQuestions() {
                         console.log("Enter their role ID!")
                     }
                 }
-            }
+            },
             {
                 type: 'input',
                 name: 'managerID',
@@ -104,7 +104,7 @@ async function startQuestions() {
                         console.log("Enter their manager's ID!")
                     }
                 }
-            }
+            },
             {
                 type: 'input',
                 name: 'departmentID',
@@ -128,17 +128,36 @@ async function startQuestions() {
         newRole = await inquirer.prompt([
             {
                 type: 'input',
-                name: 'newRole',
+                name: 'newRoleTitle',
                 message: "What is the name of the new role? (This is required)",
-                validate: newRole => {
-                    if (newRole) {
+                validate: newRoleTitle => {
+                    if (newRoleTitle) {
                         return true;
                     } else {
                         console.log("Enter the name of the new role!")
                     }
                 }
+            },
+            {
+                type: 'input',
+                name: 'newRoleSalary',
+                message: "What is the salary of the new role? (This is required)",
+                validate: newRoleSalary => {
+                    if (newRoleSalary) {
+                        return true;
+                    } else {
+                        console.log("Enter the salary!")
+                    }
+                }
+            },
+            {
+                type: 'list',
+                name: 'departmentID',
+                message: "What department does the new role belong to? (This is required)",
+                choices: ['1','2','3','4']
             }
         ])
+        
         if (newRole) {
             roles.push(newRole);
         }
