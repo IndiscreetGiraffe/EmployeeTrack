@@ -54,6 +54,29 @@ async function startQuestions() {
         addDepartment();
     }
 
+    if (question.trackerAction === 'Add an employee') {
+        newEmployee = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'newDepartment',
+                message: "What is the new employee's name? (This is required)",
+                validate: newEmployee => {
+                    if (newEmployee) {
+                        return true;
+                    } else {
+                        console.log("Enter the new employee's name!")
+                    }
+                }
+            }
+        ])
+        if (newEmployee) {
+            employees.push(newEmployee);
+        }
+        addEmployee();
+    }
+
+
+
 
 
 }
