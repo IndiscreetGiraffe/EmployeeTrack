@@ -299,3 +299,17 @@ const addEmployee = () => {
         console.log("Use the down arrow to perform another action.")
     });
 };
+
+const addRole = () => {
+    const params = [roles[roles.length-1].newRoleTitle, role[role.length-1].newRoleSalary, role[role.length-1].departmentID];
+
+    db.query(`INSERT INTO employeeroles (title, salary, department_id)
+    VALUES (?, ?, ?)`, params, (err, res) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log('',"The new role has been added!")
+        console.log("Use the down arrow to perform another action.");
+    });
+};
