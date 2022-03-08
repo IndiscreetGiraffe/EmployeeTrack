@@ -313,3 +313,19 @@ const addRole = () => {
         console.log("Use the down arrow to perform another action.");
     });
 };
+
+const updateEmployeeRole = () => {
+    const params = [updateRole[0].newRoleID, updateRole[0].employeeFirstName, updateRole[0].employeeLastName];
+
+    db.query(`UPDATE employee ser role_id = ?
+    WHERE first_name = ? and last_name = ?`, params, (err, res) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        console.log("This employee has been updated!")
+        console.log("Use the down arrow to perform another action.");
+    });
+};
+
+startQuestions();
