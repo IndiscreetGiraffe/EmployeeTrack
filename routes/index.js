@@ -68,6 +68,54 @@ async function startQuestions() {
                         console.log("Enter their first name!")
                     }
                 }
+            },
+            {
+                type: 'input',
+                name: 'newEmployeeLastName',
+                message: "What is the new employee's last name? (This is required)",
+                validate: newEmployeeLastName => {
+                    if (newEmployeeLastName) {
+                        return true;
+                    } else {
+                        console.log("Enter their last name!")
+                    }
+                }
+            }
+            {
+                type: 'input',
+                name: 'roleID',
+                message: "What is the new employee's role ID? (This is required)",
+                validate: roleID => {
+                    if (roleID) {
+                        return true;
+                    } else {
+                        console.log("Enter their role ID!")
+                    }
+                }
+            }
+            {
+                type: 'input',
+                name: 'managerID',
+                message: "What is their manager's ID? (This is required)",
+                validate: managerID => {
+                    if (managerID) {
+                        return true;
+                    } else {
+                        console.log("Enter their manager's ID!")
+                    }
+                }
+            }
+            {
+                type: 'input',
+                name: 'departmentID',
+                message: "What is the new employee's department ID? (This is required)",
+                validate: departmentID => {
+                    if (departmentID) {
+                        return true;
+                    } else {
+                        console.log("Enter the department ID!")
+                    }
+                }
             }
         ])
         if (newEmployee) {
