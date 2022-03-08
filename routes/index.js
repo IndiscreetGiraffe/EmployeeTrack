@@ -2,10 +2,6 @@ const { express } = require('express');
 const inquirer = require('inquirer');
 const db = require('../db/connection');
 const cTable = require('console.table');
-const { isAsyncFunction } = require('util/types');
-const { allowedNodeEnvironmentFlags } = require('process');
-const e = require('express');
-const { start } = require('repl');
 
 let departments = [];
 let roles = [];
@@ -220,4 +216,21 @@ async function startQuestions() {
 
     startQuestions();
 
+};
+
+const viewDepartments = () => {
+
+    departments = [];
+
+    db.query(`SELECT * FROM department`, (err, row) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        for (let i = 0; i < row.length; i++) {
+            departments.push(row[i]);
+        }
+        console.table('', departments);
+        console.log('Use the down arrow to perform another action.');
+    })
 };
