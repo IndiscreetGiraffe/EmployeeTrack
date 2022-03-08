@@ -255,3 +255,19 @@ const viewEmployees = () => {
         console.log('Use the down arrow to perform another action.');
     })
 };
+
+const viewRoles = () => {
+    roles = [];
+
+    db.query(`SELECT * FROM employeerole`, (err, row) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        for (let j = 0; j < row.length; j++) {
+            roles.push(row[j]);
+        }
+        console.table('', roles);
+        console.log('Use the down arrow to perform another action.');
+    })
+};
