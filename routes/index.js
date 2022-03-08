@@ -3,6 +3,7 @@ const inquirer = require('inquirer');
 const db = require('../db/connection');
 const cTable = require('console.table');
 const { isAsyncFunction } = require('util/types');
+const { allowedNodeEnvironmentFlags } = require('process');
 
 let departments = [];
 let roles = [];
@@ -73,6 +74,27 @@ async function startQuestions() {
             employees.push(newEmployee);
         }
         addEmployee();
+    }
+
+    if (question.trackerAction === 'Add a role') {
+        newRole = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'newRole',
+                message: "What is the name of the new role? (This is required)",
+                validate: newRole => {
+                    if (newRole) {
+                        return true;
+                    } else {
+                        console.log("Enter the name of the new role!")
+                    }
+                }
+            }
+        ])
+        if (newRole) {
+            roles.push(newRole);
+        }
+        addRole();
     }
 
 
