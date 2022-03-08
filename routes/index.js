@@ -33,5 +33,27 @@ async function startQuestions() {
         viewRoles();
     }
 
-    
+    if (question.trackerAction === 'Add a department') {
+        newDepartment = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'newDepartment',
+                message: "What is the new Department's name? (This is required)",
+                validate: newDepartment => {
+                    if (newDepartment) {
+                        return true;
+                    } else {
+                        console.log("Enter a department name!")
+                    }
+                }
+            }
+        ])
+        if (newDepartment) {
+            departments.push(newDepartment);
+        }
+        addDepartment();
+    }
+
+
+
 }
