@@ -232,7 +232,7 @@ const viewDepartments = () => {
         }
         console.table('', departments);
         console.log('Use the down arrow to perform another action.');
-    })
+    });
 };
 
 const viewEmployees = () => {
@@ -253,7 +253,7 @@ const viewEmployees = () => {
         }
         console.table('', employees);
         console.log('Use the down arrow to perform another action.');
-    })
+    });
 };
 
 const viewRoles = () => {
@@ -269,5 +269,19 @@ const viewRoles = () => {
         }
         console.table('', roles);
         console.log('Use the down arrow to perform another action.');
-    })
+    });
+};
+
+const addDepartment = () => {
+    const params = [departments[departments.length-1].newDepartment];
+
+    db.query(`INSERT INTO department (department_name)
+    VALUES (?)`, params, (err, res) => {
+        if (err) {
+            console.log (err);
+            return;
+        }
+        console.log("This department has been added!")
+        console.log("Use the down arrow to perform another action.");
+    });
 };
