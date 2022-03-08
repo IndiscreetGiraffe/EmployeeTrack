@@ -21,5 +21,17 @@ async function startQuestions() {
         }
     ])
 
+    if (question.trackerAction === 'View all departments') {
+        viewDepartments();
+    }
+
+    if (question.trackerAction === 'View all employees') {
+        viewEmployees();
+    }
+
+    if (question.trackerAction === 'View all roles') {
+        viewRoles();
+    }
+
     
 }
