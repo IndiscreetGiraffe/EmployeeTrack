@@ -234,3 +234,24 @@ const viewDepartments = () => {
         console.log('Use the down arrow to perform another action.');
     })
 };
+
+const viewEmployees = () => {
+    employees = [];
+
+    db.query(`SELECT employee.*, department.department_name AS department, employeeroles.title AS role
+    from employee
+    LEFT JOIN department
+    ON employee.department_id = department.id
+    LEFT JOIN employeerole
+    ON employee.role_id = employeerole.id`, (err, row) => {
+        if (err) {
+            console.log(err);
+            return;
+        }
+        for (let k = 0; k < row.length; k++) {
+            employees.push(row[k]);
+        }
+        console.table('', employees);
+        console.log('Use the down arrow to perform another action.');
+    })
+};
