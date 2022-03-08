@@ -4,6 +4,7 @@ const db = require('../db/connection');
 const cTable = require('console.table');
 const { isAsyncFunction } = require('util/types');
 const { allowedNodeEnvironmentFlags } = require('process');
+const e = require('express');
 
 let departments = [];
 let roles = [];
@@ -157,12 +158,61 @@ async function startQuestions() {
                 choices: ['1','2','3','4']
             }
         ])
-        
+
         if (newRole) {
             roles.push(newRole);
         }
         addRole();
     }
+
+    if (question.trackerAction === "Update and employee role") {
+
+        updateEmployeeRole = await inquirer.prompt([
+            {
+                type: 'input',
+                name: 'employeeFirstName',
+                message: "What is the employee's first name you would like to update? (This is required)",
+                validate: employeeFirstName => {
+                    if (employeeFirstName) {
+                        return true; 
+                    } else {
+                        console.log("Enter the employee's first name!")
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'employeeLastName',
+                message: "What is the employee's last name you would like to update? (This is required)",
+                validate: employeeLastName => {
+                    if (employeeLastName) {
+                        return true;
+                    } else {
+                        console.log("Enter the employee's last name!")
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'newRoleID',
+                message: "What is the role ID you would like to give this employee? (This is required)",
+                validate: newRoleID => {
+                    if (newRoleID) {
+                        return true;
+                    } else {
+                        console.log("Enter the new role ID!")
+                    }
+                }
+            }
+        ])
+        if (updateEmployeeRole) {
+            updatedRole.push(updateEmployeeRole);
+        }
+
+        updateEmployeeRole();
+    }
+
+
 
 
 
