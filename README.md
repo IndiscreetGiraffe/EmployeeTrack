@@ -1,4 +1,4 @@
-# EmployeeTRack
+# EmployeeTracker
 
   ![Badge for License](https://img.shields.io/badge/license-Open-informational)
   
@@ -14,10 +14,9 @@
 
 
   ## Project Description 
-  An app to use in the console for tracking your employees, and when necessary, viewing and updating any data regarding them. This data includes their department, role, salary, and manager. 
+  An app to use in the console for tracking your employees, and when necessary, viewing and updating any data regarding them. This data includes their department, role, salary,   and manager. 
 
   
-  image
   
  
   ## Languages Used 
