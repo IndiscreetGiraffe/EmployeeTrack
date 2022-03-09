@@ -15,7 +15,7 @@ app.get('/api/department', (req, res) => {
 
     db.query(sql, (err, row) => {
         if (err) {
-            res.status(500).json({ error: "Error" });
+            res.status(500).json({ error: err.message });
             return;
         }
         res.json({
@@ -145,7 +145,7 @@ app.put('/api/employee/:id', (req, res) => {
 
 app.use((req, res) => {
     res.status(404).end();
-})
+});
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

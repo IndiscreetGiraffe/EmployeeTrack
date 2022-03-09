@@ -32,6 +32,7 @@ async function startQuestions() {
         viewRoles();
     }
 
+    let newDepartment
     if (question.trackerAction === 'Add a department') {
         newDepartment = await inquirer.prompt([
             {
@@ -238,7 +239,7 @@ const viewDepartments = () => {
 const viewEmployees = () => {
     employees = [];
 
-    db.query(`SELECT employee.*, department.department_name AS department, employeeroles.title AS role
+    db.query(`SELECT employee.*, department.department_name AS department, employeerole.title AS role
     from employee
     LEFT JOIN department
     ON employee.department_id = department.id
@@ -303,7 +304,7 @@ const addEmployee = () => {
 const addRole = () => {
     const params = [roles[roles.length-1].newRoleTitle, role[role.length-1].newRoleSalary, role[role.length-1].departmentID];
 
-    db.query(`INSERT INTO employeeroles (title, salary, department_id)
+    db.query(`INSERT INTO employeerole (title, salary, department_id)
     VALUES (?, ?, ?)`, params, (err, res) => {
         if (err) {
             console.log(err);
