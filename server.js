@@ -1,7 +1,6 @@
 const express = require('express');
 const inputCheck = require('./utils/inputCheck');
 const db = require('./db/connection');
-const { restoreDefaultPrompts } = require('inquirer');
 
 
 const PORT = process.env.PORT || 3306;
